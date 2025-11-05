@@ -102,7 +102,7 @@ function comparerProposition(secretArr, propositionStr) {
     ajouterHistorique(proposition, resultat.bienPlaces, resultat.malPlaces, gagne);
 
     if (gagne) {
-      alert("Bravo ! Vous avez trouvé la combinaison : " + combinaisonSecrete.join(""));
+      alert("Bravo ! Vous avez trouvé la combinaison : " + combinaisonSecrete.join("") + "\nVotre nombre de tentatives : " + historiqueEl.childElementCount);
       resetPartie();
       input.value = "";
       input.focus();
