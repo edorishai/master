@@ -1,4 +1,7 @@
 
+const MAX_ATTEMPTS = 10; // nombre max d'essais autorisés
+const DEBUG = false;
+
 function genererCombinaisonSecrete() {
   const comb = [];
   for (let i = 0; i < 4; i++) comb.push(Math.floor(Math.random() * 6) + 1);
@@ -69,8 +72,23 @@ function comparerProposition(secretArr, propositionStr) {
     li.scrollIntoView({ block: "end" });
   }
 
-  form.addEventListener('submit', function(e) {
+  function afficherSolutionDansHistorique(secretStr) {
+    const li = document.createElement('li');
+    li.className = 'solution';
+    li.textContent = "💡 La combinaison secrète était : " + secretStr;
+    historiqueEl.appendChild(li);
+    li.scrollIntoView({ block: "end" });
+  }
+
+  function resetPartie() {
+    historiqueEl.innerHTML = "";
+    combinaisonSecrete = genererCombinaisonSecrete();
+    if (DEBUG) console.log("DEBUG - nouvelle combinaison secrète :", combinaisonSecrete.join(""));
+  }
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
+
     const proposition = input.value.trim();
 
     if (!saisieValide(proposition)) {
@@ -81,25 +99,44 @@ function comparerProposition(secretArr, propositionStr) {
 
     const resultat = comparerProposition(combinaisonSecrete, proposition);
     const gagne = resultat.bienPlaces === 4;
-
     ajouterHistorique(proposition, resultat.bienPlaces, resultat.malPlaces, gagne);
 
     if (gagne) {
-      alert("Bravo ! Vous avez trouvé la combinaison.");
-
+      alert("Bravo ! Vous avez trouvé la combinaison : " + combinaisonSecrete.join(""));
+      resetPartie();
+      input.value = "";
+      input.focus();
+      return;
     }
 
+
+    if (historiqueEl.childElementCount >= MAX_ATTEMPTS) {
+      afficherSolutionDansHistorique(combinaisonSecrete.join(""));
+
+      alert("Vous avez atteint le nombre maximum de tentatives.\nLa combinaison secrète était : " + combinaisonSecrete.join("") + "\nUne nouvelle partie va commencer.");
+
+
+      resetPartie();
+      input.value = "";
+      input.focus();
+      return;
+    }
+
+
     input.value = "";
     input.focus();
   });
 
-  btnNouvellePartie.addEventListener('click', function() {
-    combinaisonSecrete = genererCombinaisonSecrete();
-    historiqueEl.innerHTML = "";
-    input.value = "";
-    input.focus();
-    if (DEBUG) console.log("DEBUG - nouvelle secret:", combinaisonSecrete.join(""));
+
+  btnNouvellePartie.addEventListener('click', function () {
+    if (confirm("Voulez-vous vraiment commencer une nouvelle partie ? L'historique sera effacé.")) {
+      resetPartie();
+      input.value = "";
+      input.focus();
+    }
   });
+
 
   input.focus();
+
 })();
