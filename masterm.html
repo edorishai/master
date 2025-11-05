@@ -2,17 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>Jeu combinaison - séparé JS</title>
+  <title>Jeu : combinaison (retours bien/mal placés)</title>
   <style>
     body { font-family: Arial, sans-serif; padding:20px; }
-    #historique { border:1px solid #ccc; padding:10px; min-height:80px; width:320px; list-style:none; }
+    #historique { border:1px solid #ccc; padding:10px; min-height:80px; width:360px; list-style:none; }
     #historique li.ok { color:green; }
     #historique li.ko { color:red; }
+    .result-details { font-size:0.9em; color:#333; margin-top:4px; }
   </style>
 </head>
 <body>
 
-  <h1>Jeu : combinaison secrète</h1>
+  <h1>Combinaison secrète (4 chiffres 1–6)</h1>
 
   <form id="formProposition" autocomplete="off">
     <label for="proposition">Entrez 4 chiffres (1-6) :</label>
@@ -21,8 +22,9 @@
     <button type="button" id="btnNouvellePartie">Nouvelle partie</button>
   </form>
 
-  <h2>Historique :</h2>
+  <h2>Historique des tentatives :</h2>
   <ul id="historique"></ul>
+
 
 
   <script src="masterMi.js"></script>
