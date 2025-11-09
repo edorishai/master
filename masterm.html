@@ -2,28 +2,36 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css">
   <title>Jeu : combinaison (retours bien/mal placés)</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding:20px; }
-    #historique { border:1px solid #ccc; padding:10px; min-height:80px; width:360px; list-style:none; }
-    #historique li.ok { color:green; }
-    #historique li.ko { color:red; }
-    .result-details { font-size:0.9em; color:#333; margin-top:4px; }
-  </style>
+
 </head>
 <body>
 
-  <h1>Combinaison secrète (4 chiffres 1–6)</h1>
+  <div class="container">
+    <h1>MasterMi 1 a 6</h1>
 
-  <form id="formProposition" autocomplete="off">
-    <label for="proposition">Entrez 4 chiffres (1-6) :</label>
-    <input type="text" id="proposition" maxlength="4" placeholder="ex: 1234" />
-    <button type="submit">Valider</button>
-    <button type="button" id="btnNouvellePartie">Nouvelle partie</button>
-  </form>
+    <label for="difficulte">Difficulté :</label>
+    <select id="difficulte">
+      <option value="facile">Facile </option>
+      <option value="moyen">Moyen </option>
+      <option value="difficile">Difficile </option>
+      <option value="hardcorp">Hardcorp </option>
+      <option value="god">God </option>
+    </select>
 
-  <h2>Historique des tentatives :</h2>
-  <ul id="historique"></ul>
+    <form id="formProposition">
+      <label for="proposition">Entrez votre proposition :</label>
+      <input type="text" id="proposition" maxlength="4" placeholder="ex : 1234">
+      <button type="submit">Valider</button>
+    </form>
+
+    <button id="btnNouvellePartie">Nouvelle Partie</button>
+
+    <ul id="historique"></ul>
+
+    <div id="compteurParties">Nombre de parties jouées : 0</div>
+  </div>
 
 
 

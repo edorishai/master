@@ -1,0 +1,106 @@
+
+    :root {
+      --bg: #000;
+      --card-bg: #111;
+      --text: #fff;
+      --accent: #e50914;
+      --accent-dark: #b0060e;
+      --muted: #bbb;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 15px;
+      padding: 30px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    }
+
+    h1 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      background-color: #000;
+      color: var(--text);
+      text-align: center;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: var(--text);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--accent-dark);
+      transform: scale(1.05);
+    }
+
+    ul#historique {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #0a0a0a;
+      border-radius: 10px;
+      border: 1px solid #222;
+    }
+
+    ul#historique li {
+      padding: 8px;
+      border-bottom: 1px solid #222;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    ul#historique li.ok {
+      color: #00ff99;
+    }
+
+    ul#historique li.ko {
+      color: var(--accent);
+    }
+
+    #compteurParties {
+      margin-top: 20px;
+      background: #0a0a0a;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: bold;
+      border: 1px solid var(--accent);
+    }
