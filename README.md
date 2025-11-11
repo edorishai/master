@@ -2,7 +2,7 @@
 
 
 
-MasterMi est un mini-jeu web inspiré du Mastermind, développé en HTML, CSS et JavaScript.  
+Mastermind est un mini-jeu web , développé en HTML, CSS et JavaScript.  
 Le but du jeu est de deviner une combinaison secrète de chiffres (entre 1 et 6) en un nombre limité de tentatives, selon la difficulté choisie.  
 Chaque tentative affiche le nombre de chiffres bien placés et mal placés.
 
